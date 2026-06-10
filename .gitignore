@@ -1,0 +1,11 @@
+# Local secrets / environment
+.env
+
+# Cloned sub-repos (setup.sh creates these)
+/harbor/
+/terminal-bench-science/
+/ChemGraph/
+
+# OS / editor noise
+.DS_Store
+*.swp
