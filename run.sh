@@ -115,9 +115,16 @@ fi
 # go
 # --------------------------------------------------------------------------- #
 
+# Banner: show the exact harbor invocation so users can copy/paste-debug.
+# Print each --ae / --ve / --agent-kwarg on its own indented line.
 echo "==> harbor run -a ${AGENT} -m ${MODEL}"
-echo "    task:  ${TASK_PATH}"
-echo "    ARGO_USER=${ARGO_USER}"
+echo "    -p ${TASK_PATH}"
+for ((i=0; i<${#COMMON_ENV[@]}; i+=2)); do
+    echo "    ${COMMON_ENV[i]} ${COMMON_ENV[i+1]}"
+done
+for ((i=0; i<${#AGENT_KWARGS[@]}; i+=2)); do
+    echo "    ${AGENT_KWARGS[i]} ${AGENT_KWARGS[i+1]}"
+done
 echo
 
 # Quiet mode, or any non-chemgraph agent: just exec harbor and let it own
